@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ttoss/common/preference/app_preference.dart';
 import 'package:ttoss/common/theme/custom_theme.dart';
 import 'package:ttoss/controller/app_controller.dart';
-import 'package:ttoss/main_binding.dart';
-import 'package:ttoss/main_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:ttoss/feature/main/main_binding.dart';
+import 'package:ttoss/feature/main/main_screen.dart';
 
 /// `WidgetsFlutterBinding` serves as a concrete binding for applications built on the Widgets framework.
 /// It acts as the interface that connects the Flutter framework to the Flutter engine.
