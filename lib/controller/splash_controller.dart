@@ -1,5 +1,5 @@
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:ttoss/feature/main/main_screen.dart';
 
 class SplashController extends GetxController {
   static SplashController get to => Get.find();
@@ -10,7 +10,9 @@ class SplashController extends GetxController {
   }
 
   Future<void> navigateToMainScreen() async {
+    // run application initialization here
+    // such as load environment variables, ..
     await Future.delayed(const Duration(seconds: 2));
-    Get.to(() => MainScreen());
+    FlutterNativeSplash.remove();
   }
 }

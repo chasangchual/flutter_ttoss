@@ -1,7 +1,8 @@
-import 'package:ttoss/controller/app_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sidebarx/sidebarx.dart';
+import 'package:ttoss/controller/app_controller.dart';
+import 'package:ttoss/controller/splash_controller.dart';
 
 class MainScreen extends StatelessWidget {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
@@ -25,12 +26,16 @@ class MainScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SafeArea(
-        bottom: !AppController.to.extendBody,
-        child: const Placeholder(),
-      ),
-    );
+    return GetBuilder<SplashController>(
+        init: SplashController(),
+        builder: (context) {
+          return Container(
+            child: SafeArea(
+              bottom: !AppController.to.extendBody,
+              child: const Placeholder(),
+            ),
+          );
+        });
   }
 }
 
