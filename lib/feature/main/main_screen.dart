@@ -5,7 +5,7 @@ import 'package:ttoss/controller/app_controller.dart';
 import 'package:ttoss/controller/bottom_navigation_controller.dart';
 import 'package:ttoss/controller/splash_controller.dart';
 import 'package:ttoss/feature/main/bottom_navigation.dart';
-import 'package:ttoss/feature/main/side_menu.dart';
+import 'package:ttoss/feature/main/side_menu_fragment.dart';
 
 class MainScreen extends StatelessWidget {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
@@ -19,7 +19,7 @@ class MainScreen extends StatelessWidget {
           extendBody: AppController.to.extendBody,
           body: const MainScreenBody(),
           bottomNavigationBar: buildBottomNavigationBar(context),
-          drawer: MainSideBar(controller: _controller));
+          drawer: MainSideBarFragment(controller: _controller));
     });
   }
 }

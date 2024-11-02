@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ttoss/controller/app_controller.dart';
 import 'package:ttoss/controller/bottom_navigation_controller.dart';
-import 'package:ttoss/feature/home/home_screen.dart';
-import 'package:ttoss/feature/more/more_screen.dart';
-import 'package:ttoss/feature/payment/payment_screen.dart';
-import 'package:ttoss/feature/rewards/rewards_screen.dart';
-import 'package:ttoss/feature/stock/stock_screen.dart';
+import 'package:ttoss/feature/home/home_fragment.dart';
+import 'package:ttoss/feature/more/more_fragment.dart';
+import 'package:ttoss/feature/payment/payment_fragment.dart';
+import 'package:ttoss/feature/rewards/rewards_fragment.dart';
+import 'package:ttoss/feature/stock/stock_fragment.dart';
 
 Widget buildBottomNavigationBar(BuildContext context) {
   return BottomNavigationBar(
@@ -26,16 +26,16 @@ enum NavigationTabItem {
   home(
     Icons.home,
     'Home',
-    HomeScreen(),
+    HomeFragment(),
   ),
   rewards(
     Icons.star,
     'Rewards',
-    RewardsScreen(),
+    RewardsFragment(),
   ),
-  payment(Icons.payment, 'Payment', PaymentScreen()),
-  stock(Icons.candlestick_chart, 'Stock', StockScreen()),
-  more(Icons.menu, 'More', MoreScreen());
+  payment(Icons.payment, 'Payment', PaymentFragment()),
+  stock(Icons.candlestick_chart, 'Stock', StockFragment()),
+  more(Icons.menu, 'More', MoreFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;

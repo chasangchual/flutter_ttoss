@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class RewardsScreen extends StatelessWidget {
-  const RewardsScreen({super.key});
+class StockFragment extends StatelessWidget {
+  const StockFragment({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Rewards"),
+      child: Text("Stock"),
     );
   }
 }
