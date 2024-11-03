@@ -23,16 +23,8 @@ List<BottomNavigationBarItem> bottomNavigationItems(BuildContext context) {
 }
 
 enum NavigationTabItem {
-  home(
-    Icons.home,
-    'Home',
-    HomeFragment(),
-  ),
-  rewards(
-    Icons.star,
-    'Rewards',
-    RewardsFragment(),
-  ),
+  home(Icons.home, 'Home', HomeFragment()),
+  rewards(Icons.star, 'Rewards', RewardsFragment()),
   payment(Icons.payment, 'Payment', PaymentFragment()),
   stock(Icons.candlestick_chart, 'Stock', StockFragment()),
   more(Icons.menu, 'More', MoreFragment());
