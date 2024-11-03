@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:ttoss/common/constant/app_colors.dart';
 import 'package:ttoss/common/theme/color/abs_theme_colors.dart';
-import 'package:flutter/material.dart';
 
 class DarkAppColors extends AbstractThemeColors {
   const DarkAppColors();
@@ -43,4 +43,7 @@ class DarkAppColors extends AbstractThemeColors {
 
   @override
   Color get blueButtonBackground => AppColors.blue;
+
+  @override
+  Color get appBarBgColor => AppColors.darkGrey;
 }

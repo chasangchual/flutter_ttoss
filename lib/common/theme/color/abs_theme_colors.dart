@@ -1,5 +1,5 @@
-import 'package:ttoss/common/constant/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:ttoss/common/constant/app_colors.dart';
 
 typedef ColorProvider = Color Function();
 
@@ -43,4 +43,6 @@ abstract class AbstractThemeColors {
   Color get snackbarBgColor => AppColors.mediumBlue;
 
   Color get blueButtonBackground => AppColors.darkBlue;
+
+  Color get appBarBgColor => AppColors.mediumBlue;
 }
