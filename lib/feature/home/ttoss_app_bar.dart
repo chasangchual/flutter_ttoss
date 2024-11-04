@@ -26,24 +26,27 @@ class TtossAppBar extends StatelessWidget {
             children: [
               const Icon(FontAwesomeIcons.mapPin),
               const Width(10),
-              Stack(
-                children: [
-                  const Icon(FontAwesomeIcons.solidBell),
-                  Obx(() {
-                    return Positioned.fill(
+              Obx(() {
+                return Stack(
+                  children: [
+                    const Icon(FontAwesomeIcons.solidBell),
+                    if (AppBarController.to.newNotificationAvailable)
+                      Positioned.fill(
                         child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: 5,
-                        height: 5,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppNotificationController.to.newNotificationAvailable ? Colors.red : Colors.white),
-                      ),
-                    ));
-                  })
-                ],
-              ),
+                          alignment: Alignment.topRight,
+                          child: Container(
+                            width: 5,
+                            height: 5,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      )
+                  ],
+                );
+              }),
               const Width(10),
             ],
           )

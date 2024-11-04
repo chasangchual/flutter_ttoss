@@ -6,6 +6,6 @@ class MainBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(BottomNavigationController());
-    Get.put(AppNotificationController());
+    Get.put(AppBarController());
   }
 }

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class AppNotificationController extends GetxService {
-  static AppNotificationController get to => Get.find();
+class AppBarController extends GetxService {
+  static AppBarController get to => Get.find();
 
   var _newNotificationAvailable = false.obs;
   var _newNotificationCount = 0.obs;
