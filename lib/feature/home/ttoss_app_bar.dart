@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:ttoss/common/theme/custom_theme.dart';
+import 'package:ttoss/common/dart/extension/context_extension.dart';
 import 'package:ttoss/common/widget/height_and_width.dart';
 import 'package:ttoss/controller/app_notification_controller.dart';
 
@@ -12,7 +12,7 @@ class TtossAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: getColors(context).appBarBgColor,
+      color: context.appColors.appBarBgColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

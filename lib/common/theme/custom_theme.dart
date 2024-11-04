@@ -51,19 +51,3 @@ ThemeData darkTheme = ThemeData(
     //   ThemeData(brightness: Brightness.dark).textTheme,
     // ),
     colorScheme: ColorScheme.fromSeed(seedColor: CustomTheme.dark.appColors.seedColor, brightness: Brightness.dark));
-
-AbstractThemeColors getColors(BuildContext context) {
-  if (Theme.of(context).brightness == Brightness.light) {
-    return CustomTheme.light.appColors;
-  } else {
-    return CustomTheme.dark.appColors;
-  }
-}
-
-AbstractThemeColors getShadows(BuildContext context) {
-  if (Theme.of(context).brightness == Brightness.light) {
-    return CustomTheme.light.appColors;
-  } else {
-    return CustomTheme.dark.appColors;
-  }
-}
