@@ -63,7 +63,9 @@ class AppPreferences {
 
   static bool checkIsNullable<T>() => null is T;
 
-  static Future<bool> setValue<T>(PreferenceItem<T> item, T? value) async {
+  static Future<bool> setValue<T>(String name, T? value) async {
+    PreferenceItem item = PreferenceItem(name, value);
+
     final String key = getPrefKey(item);
     final isNullable = checkIsNullable<T>();
 
@@ -125,7 +127,7 @@ class AppPreferences {
   static T getValueOrSetDefault<T>(PreferenceItem<T> item) {
     final String key = getPrefKey(item);
     if (!containsKey(item)) {
-      setValue(item, item.defaultValue);
+      setValue(item.key, item.defaultValue);
     }
     return getValue(item);
   }
@@ -192,11 +194,11 @@ class PreferenceItem<T> {
   PreferenceItem(this.key, this.defaultValue);
 
   void call(T value) {
-    AppPreferences.setValue<T>(this, value);
+    AppPreferences.setValue<T>(this.key, value);
   }
 
   Future<bool> set(T value) {
-    return AppPreferences.setValue<T>(this, value);
+    return AppPreferences.setValue<T>(this.key, value);
   }
 
   T get() {
