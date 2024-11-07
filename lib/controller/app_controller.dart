@@ -21,6 +21,7 @@ class AppController extends GetxService {
 
   set themeMode(ThemeMode value) {
     _themeMode.value = value;
+    AppPreferences.setValue('$ThemeMode', _themeMode.value);
   }
 
   AbstractThemeColors get themeColors =>
