@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ttoss/common/constant/app_colors.dart';
 import 'package:ttoss/common/dart/extension/context_extension.dart';
-import 'package:ttoss/common/widget/w_tap.dart';
+import 'package:ttoss/common/widget/tap.dart';
 
 extension SnackbarContextExtension on BuildContext {
   ///show Snackbar in Scaffold
