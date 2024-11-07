@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttoss/common/theme/custom_theme.dart';
+import 'package:ttoss/common/dart/extension/context_extension.dart';
 
 class Line extends StatelessWidget {
   const Line({
@@ -17,7 +17,7 @@ class Line extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      color: color ?? getColors(context).divider,
+      color: color ?? context.appColors.divider,
       height: height,
     );
   }
