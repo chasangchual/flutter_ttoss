@@ -6,7 +6,8 @@ part of 'bank_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BankAccountImpl _$$BankAccountImplFromJson(Map<String, dynamic> json) => _$BankAccountImpl(
+_$BankAccountImpl _$$BankAccountImplFromJson(Map<String, dynamic> json) =>
+    _$BankAccountImpl(
       id: (json['id'] as num).toInt(),
       number: json['number'] as String,
       bank: Bank.fromJson(json['bank'] as Map<String, dynamic>),
@@ -14,7 +15,8 @@ _$BankAccountImpl _$$BankAccountImplFromJson(Map<String, dynamic> json) => _$Ban
       balance: (json['balance'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$BankAccountImplToJson(_$BankAccountImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$BankAccountImplToJson(_$BankAccountImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'number': instance.number,
       'bank': instance.bank,
@@ -23,8 +25,8 @@ Map<String, dynamic> _$$BankAccountImplToJson(_$BankAccountImpl instance) => <St
     };
 
 const _$BankAccountTypeEnumMap = {
-  BankAccountType.personal: 'persona',
+  BankAccountType.personal: 'personal',
   BankAccountType.creditCard: 'creditCard',
-  BankAccountType.minus: 'minus',
+  BankAccountType.lineOfCredit: 'lineOfCredit',
   BankAccountType.stock: 'stock',
 };

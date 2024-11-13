@@ -3,8 +3,6 @@ import 'package:ttoss/model/bank_account.dart';
 import 'package:ttoss/repository/bank_repository.dart';
 import 'package:uuid/uuid.dart';
 
-import '../common/log/Log.dart';
-
 class BankAccountRepository {
   final random = RandomGenerator(seed: 63833423);
   final Faker faker = Faker();
@@ -15,12 +13,8 @@ class BankAccountRepository {
     var bankAccounts = <BankAccount>[];
     var id = 1;
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 200; i++) {
       bankAccounts.add(_fakeBankAccount(id++));
-    }
-
-    for (int i = 0; i < bankAccounts.length; i++) {
-      Log.s.d(bankAccounts[i]);
     }
 
     return bankAccounts;

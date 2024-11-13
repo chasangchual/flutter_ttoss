@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ttoss/common/dart/extension/context_extension.dart';
 import 'package:ttoss/common/dart/extension/snackbar_context_extension.dart';
 import 'package:ttoss/common/widget/arrow.dart';
+import 'package:ttoss/common/widget/height_and_width.dart';
+import 'package:ttoss/common/widget/round_container.dart';
+import 'package:ttoss/common/widget/tap.dart';
 import 'package:ttoss/feature/home/ttoss_app_bar.dart';
+import 'package:ttoss/model/bank_account.dart';
+import 'package:ttoss/repository/bank_account_repository.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeFragment extends StatelessWidget {
@@ -21,12 +25,51 @@ class HomeFragment extends StatelessWidget {
                 BigButton('Ttoss', onTap: () {
                   context.showSnackbar('Ttoss bank pressed');
                 }),
+                ...BankAccountRepository().findAll().map((e) => BackAccountItem(e)).toList()
               ]),
             ),
             const TtossAppBar(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class BackAccountItem extends StatelessWidget {
+  final BankAccount bankAccount;
+
+  const BackAccountItem(this.bankAccount, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(children: [
+          Image.asset(
+            bankAccount.bank.logoImagePath,
+            width: 25,
+            height: 25,
+          ),
+          Width(5),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              bankAccount.type != null
+                  ? Text("${bankAccount.bank.name} ${bankAccount.type.name}", style: TextStyle(fontSize: 9))
+                  : Text("${bankAccount.bank.name}", style: TextStyle(fontSize: 12)),
+              Text("\$ ${bankAccount.balance}")
+            ],
+          ).pSymmetric(h: 4),
+        ]).pSymmetric(h: 2),
+        Tap(
+          onTap: () {},
+          child: RoundedContainer(
+            child: Text('Trnasfer'),
+          ),
+        )
+      ],
     );
   }
 }
@@ -40,7 +83,7 @@ class BigButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const RoundedContainer(
-      padding: (v: 2, h: 2),
+      padding: (v: 2, h: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

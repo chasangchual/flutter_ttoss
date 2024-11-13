@@ -17,4 +17,17 @@ class BankAccount with _$BankAccount {
   factory BankAccount.fromJson(Map<String, dynamic> json) => _$BankAccountFromJson(json);
 }
 
-enum BankAccountType { personal, creditCard, minus, stock }
+enum BankAccountType {
+  personal("Personal Check Account"),
+  creditCard("Credit Card Account"),
+  lineOfCredit("Line Of Credit Account"),
+  stock("Investment Account"),
+  ;
+
+  const BankAccountType(this.name);
+
+  final String name;
+
+  @override
+  String toString() => name;
+}
