@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ttoss/common/dart/extension/num_duration_extension.dart';
 import 'package:ttoss/common/dart/extension/snackbar_context_extension.dart';
+import 'package:ttoss/common/utils/async.dart';
 import 'package:ttoss/common/widget/arrow.dart';
 import 'package:ttoss/common/widget/height_and_width.dart';
 import 'package:ttoss/common/widget/round_container.dart';
@@ -19,14 +21,21 @@ class HomeFragment extends StatelessWidget {
       child: Container(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              padding: EdgeInsets.only(top: 60),
-              child: Column(children: [
-                BigButton('Ttoss', onTap: () {
-                  context.showSnackbar('Ttoss bank pressed');
-                }),
-                ...BankAccountRepository().findAll().map((e) => BackAccountItem(e)).toList()
-              ]),
+            RefreshIndicator(
+              edgeOffset: 30,
+              onRefresh: () async {
+                // do something like, refresh SingleChildScrollView contents
+                await sleepAsync(1500.ms);
+              },
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(top: 60),
+                child: Column(children: [
+                  BigButton('Ttoss', onTap: () {
+                    context.showSnackbar('Ttoss bank pressed');
+                  }),
+                  ...BankAccountRepository().findAll().map((e) => BackAccountItem(e)).toList()
+                ]),
+              ),
             ),
             const TtossAppBar(),
           ],
@@ -82,17 +91,20 @@ class BigButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const RoundedContainer(
-      padding: (v: 2, h: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('Ttoss Bank', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ),
-          Arrow(),
-        ],
+    return Tap(
+      onTap: onTap,
+      child: const RoundedContainer(
+        padding: (v: 2, h: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Ttoss Bank', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+            Arrow(),
+          ],
+        ),
       ),
     );
   }
