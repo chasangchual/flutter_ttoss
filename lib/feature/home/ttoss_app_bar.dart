@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ttoss/common/dart/extension/context_extension.dart';
 import 'package:ttoss/common/widget/height_and_width.dart';
+import 'package:ttoss/common/widget/tap.dart';
 import 'package:ttoss/controller/app_notification_controller.dart';
+import 'package:ttoss/feature/notification/notification_screen.dart';
 
 class TtossAppBar extends StatelessWidget {
   const TtossAppBar({super.key});
@@ -29,7 +31,11 @@ class TtossAppBar extends StatelessWidget {
               Obx(() {
                 return Stack(
                   children: [
-                    const Icon(FontAwesomeIcons.solidBell),
+                    Tap(
+                        onTap: () {
+                          Get.to(NotificationScreen());
+                        },
+                        child: const Icon(FontAwesomeIcons.solidBell)),
                     if (AppBarController.to.newNotificationAvailable)
                       Positioned.fill(
                         child: Align(
