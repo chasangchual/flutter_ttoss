@@ -6,6 +6,8 @@ import 'package:ttoss/common/theme/custom_theme.dart';
 import 'package:ttoss/controller/app_controller.dart';
 import 'package:ttoss/feature/main/main_binding.dart';
 import 'package:ttoss/feature/main/main_screen.dart';
+import 'package:ttoss/feature/notification/user_notification_binding.dart';
+import 'package:ttoss/feature/notification/user_notification_screen.dart';
 
 /// `WidgetsFlutterBinding` serves as a concrete binding for applications built on the Widgets framework.
 /// It acts as the interface that connects the Flutter framework to the Flutter engine.
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: AppController.to.themeMode,
+        getPages: [
+          GetPage(name: '/notification', page: () => const NotificationScreen(), binding: UserNotificationBinding())
+        ],
       );
     });
   }

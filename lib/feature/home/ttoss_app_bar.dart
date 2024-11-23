@@ -5,7 +5,6 @@ import 'package:ttoss/common/dart/extension/context_extension.dart';
 import 'package:ttoss/common/widget/height_and_width.dart';
 import 'package:ttoss/common/widget/tap.dart';
 import 'package:ttoss/controller/app_notification_controller.dart';
-import 'package:ttoss/feature/notification/notification_screen.dart';
 
 class TtossAppBar extends StatelessWidget {
   const TtossAppBar({super.key});
@@ -33,7 +32,8 @@ class TtossAppBar extends StatelessWidget {
                   children: [
                     Tap(
                         onTap: () {
-                          Get.to(NotificationScreen());
+                          Get.toNamed('/notification');
+                          ;
                         },
                         child: const Icon(FontAwesomeIcons.solidBell)),
                     if (AppBarController.to.newNotificationAvailable)
