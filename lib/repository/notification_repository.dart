@@ -1,24 +1,31 @@
 import 'dart:core';
 
 import 'package:faker/faker.dart';
-import 'package:ttoss/model/notification.dart';
+import 'package:ttoss/model/user_notification.dart';
 
 class NotificationRepository {
-  List<Notification> findAll() {
+  List<UserNotification> findAll() {
     final random = RandomGenerator(seed: 63833423);
-    var notifications = <Notification>[];
+    var notifications = <UserNotification>[];
+    DateTime currentDate = DateTime.now().toUtc();
 
     for (int i = 0; i < 100; i++) {
-      NotificationType type = NotificationType.values[random.integer(NotificationType.values.length)];
-      List<String> messages = notificationMessages[type] ?? <String>[];
+      UserNotificationType type = UserNotificationType.values[random.integer(UserNotificationType.values.length)];
+      String message = notificationMessages[type]?[random.integer(notificationMessages[type]!.length)] ?? "";
+      DateTime dateOfNotified = currentDate
+          .subtract(Duration(days: random.integer(7)))
+          .subtract(Duration(hours: random.integer(24)))
+          .subtract(Duration(minutes: random.integer(60)));
 
-      notifications.add(Notification(id: i, type: type, message: messages[random.integer(messages.length)]));
+      notifications.add(UserNotification(
+          id: i, type: type, message: message, state: UserNotificationState.delivered, date: dateOfNotified));
     }
+
     return notifications;
   }
 
-  Map<NotificationType, List<String>> notificationMessages = {
-    NotificationType.email: <String>[
+  Map<UserNotificationType, List<String>> notificationMessages = {
+    UserNotificationType.email: <String>[
       "You have a new message from support@example.com.",
       "Your inbox is almost full. Please delete some emails.",
       "Newsletter: Check out our latest updates and promotions!",
@@ -35,7 +42,7 @@ class NotificationRepository {
       "Your email forwarding setup is complete.",
       "Scheduled email sent successfully.",
     ],
-    NotificationType.foreign_currency_transfer: <String>[
+    UserNotificationType.foreign_currency_transfer: <String>[
       "Your transfer of \$1,000 USD to EUR is complete.",
       "A currency transfer request of \$500 AUD to GBP was submitted.",
       "The exchange rate for your transfer has been updated.",
@@ -52,7 +59,24 @@ class NotificationRepository {
       "Your transfer to EUR exceeded the daily limit.",
       "Recipient’s account is not eligible for foreign currency transfers.",
     ],
-    NotificationType.rate_change: <String>[
+    UserNotificationType.payment: <String>[
+      "Your payment of \$200 to ABC Inc. was successful.",
+      "Auto-payment of \$50 for Netflix is due tomorrow.",
+      "Failed to process your payment of \$100. Please retry.",
+      "Your recurring payment for Gym Membership has been set up.",
+      "You received \$500 from John Doe.",
+      "Payment of \$45 was refunded to your account.",
+      "A payment authorization request for \$150 is pending.",
+      "Your payment to XYZ Ltd. is being processed.",
+      "New payment method added to your account.",
+      "Your payment of \$25 was declined. Insufficient funds.",
+      "You earned 200 reward points for your recent payment.",
+      "Payment details updated successfully.",
+      "Scheduled payment of \$100 will be processed tomorrow.",
+      "Your payment for Order #12345 has been confirmed.",
+      "Unusual payment activity detected. Please verify."
+    ],
+    UserNotificationType.rate_change: <String>[
       "Your wire transfer of \$1,200 to John Doe was successful.",
       "Failed to process your wire transfer to XYZ Bank.",
       "Your wire transfer request is being reviewed.",
@@ -69,7 +93,7 @@ class NotificationRepository {
       "Confirmation: Wire transfer to Chase Bank was processed.",
       "Your international wire transfer to Germany is in progress.",
     ],
-    NotificationType.wire_transfer: <String>[
+    UserNotificationType.wire_transfer: <String>[
       "Your wire transfer of \$1,200 to John Doe was successful.",
       "Failed to process your wire transfer to XYZ Bank.",
       "Your wire transfer request is being reviewed.",
@@ -86,7 +110,7 @@ class NotificationRepository {
       "Confirmation: Wire transfer to Chase Bank was processed.",
       "Your international wire transfer to Germany is in progress.",
     ],
-    NotificationType.security: <String>[
+    UserNotificationType.security: <String>[
       "A new device logged into your account. Was this you?",
       "Password successfully changed. If this wasn’t you, contact support.",
       "Failed login attempt detected. Please review your account activity.",
